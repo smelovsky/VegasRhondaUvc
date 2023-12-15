@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "115016246587",
+    "project_id": "vegasrhonda-705a9",
+    "storage_bucket": "vegasrhonda-705a9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:115016246587:android:bd5433ffd1285149b2431e",
+        "android_client_info": {
+          "package_name": "com.rhonda"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBWKtxx_LM0zZAry-xUpoYsLmtGH0_-zjI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

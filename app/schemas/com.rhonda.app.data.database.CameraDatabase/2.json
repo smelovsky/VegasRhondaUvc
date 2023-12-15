@@ -1,0 +1,235 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 2,
+    "identityHash": "2c64af26329ec6d58ab099be8b67bdee",
+    "entities": [
+      {
+        "tableName": "camera",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`camera_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `serial_number` TEXT NOT NULL, `model` TEXT NOT NULL, `last_firmware_revision` TEXT NOT NULL, `last_connect_on` INTEGER NOT NULL, `ble_mac_address` TEXT NOT NULL, `wifi_ssid` TEXT NOT NULL, `wifi_passphrase` TEXT NOT NULL, `initial_setup_done` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "cameraId",
+            "columnName": "camera_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "serialNumber",
+            "columnName": "serial_number",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "model",
+            "columnName": "model",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "lastFirmwareRevision",
+            "columnName": "last_firmware_revision",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "lastConnectOn",
+            "columnName": "last_connect_on",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "bleMacAddress",
+            "columnName": "ble_mac_address",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "wifiSsid",
+            "columnName": "wifi_ssid",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "wifiPassphrase",
+            "columnName": "wifi_passphrase",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "initialSetupDone",
+            "columnName": "initial_setup_done",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "camera_id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "drf_object",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`drf_object_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `camera_id` INTEGER NOT NULL, `object_type` INTEGER NOT NULL, `object_name` TEXT NOT NULL, `created_on` INTEGER NOT NULL, `is_new` INTEGER NOT NULL, `video_url` TEXT NOT NULL, `video_size` INTEGER NOT NULL, `thumbnail_front_url` TEXT NOT NULL, `thumbnail_front_size` INTEGER NOT NULL, `thumbnail_rear_url` TEXT NOT NULL, `thumbnail_rear_size` INTEGER NOT NULL, `metadata_url` TEXT NOT NULL, `metadata_size` INTEGER NOT NULL, `video_downloaded_name` TEXT NOT NULL, FOREIGN KEY(`camera_id`) REFERENCES `camera`(`camera_id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "drfObjectId",
+            "columnName": "drf_object_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "cameraId",
+            "columnName": "camera_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "objectType",
+            "columnName": "object_type",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "objectName",
+            "columnName": "object_name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "createdOn",
+            "columnName": "created_on",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "isNew",
+            "columnName": "is_new",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "videoUrl",
+            "columnName": "video_url",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "videoSize",
+            "columnName": "video_size",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "thumbnailFrontUrl",
+            "columnName": "thumbnail_front_url",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "thumbnailFrontSize",
+            "columnName": "thumbnail_front_size",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "thumbnailRearUrl",
+            "columnName": "thumbnail_rear_url",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "thumbnailRearSize",
+            "columnName": "thumbnail_rear_size",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "metadataUrl",
+            "columnName": "metadata_url",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "metadataSize",
+            "columnName": "metadata_size",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "videoDownloadedName",
+            "columnName": "video_downloaded_name",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "drf_object_id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_drf_object_drf_object_id",
+            "unique": false,
+            "columnNames": [
+              "drf_object_id"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_drf_object_drf_object_id` ON `${TABLE_NAME}` (`drf_object_id`)"
+          },
+          {
+            "name": "index_drf_object_camera_id",
+            "unique": false,
+            "columnNames": [
+              "camera_id"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_drf_object_camera_id` ON `${TABLE_NAME}` (`camera_id`)"
+          },
+          {
+            "name": "index_drf_object_is_new",
+            "unique": false,
+            "columnNames": [
+              "is_new"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_drf_object_is_new` ON `${TABLE_NAME}` (`is_new`)"
+          },
+          {
+            "name": "index_drf_object_object_type",
+            "unique": false,
+            "columnNames": [
+              "object_type"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_drf_object_object_type` ON `${TABLE_NAME}` (`object_type`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "camera",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "camera_id"
+            ],
+            "referencedColumns": [
+              "camera_id"
+            ]
+          }
+        ]
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '2c64af26329ec6d58ab099be8b67bdee')"
+    ]
+  }
+}

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2020-2023 Rhonda Software.
+  ~ All rights reserved
+  -->
+
+<usb>
+    <!-- all device of UVC -->
+    <usb-device
+        class="239"
+        subclass="2" />
+</usb>
